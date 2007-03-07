@@ -9,6 +9,8 @@ Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
 # Source0-md5:	990f53b0213f8cc04cc8ea5882f086a1
 URL:		http://sshguard.sourceforge.net/
 BuildRequires:	python
+BuildRequires:	rpm-pythonprov
+BuildRequires:	rpmbuild(macros) >= 1.228
 BuildRequires:	scons
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
