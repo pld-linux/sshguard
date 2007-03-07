@@ -2,7 +2,7 @@ Summary:	sshguard - protect hosts from the plague of brute force attacks agains 
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer ssh
 Name:		sshguard
 Version:	0.9
-Release:	0.1
+Release:	1
 License:	BSD
 Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
@@ -12,6 +12,7 @@ BuildRequires:	python
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.228
 BuildRequires:	scons
+BuildRequires:	sed >= 4.0
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -27,17 +28,22 @@ przeciwieństwie do wielu podobnych narzędzi jest on napisany w
 interpretowanym języku, jest niezależny, szybki i lekki, ponieważ jest
 napisany w C.
 
+%define		_fw	-Q FIREWALLTYPE=iptables
+
 %prep
 %setup -q
+%{__sed} -i -e "s@/usr/local@$RPM_BUILD_ROOT%{_prefix}@g" SConstruct
 
 %build
-python scons.py -Q FIREWALLTYPE=iptables
+%{__scons} \
+	%{_fw}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
 install -d $RPM_BUILD_ROOT%{_sbindir}
-install sshguard $RPM_BUILD_ROOT%{_sbindir}/
+
+%{__scons} install \
+	%{_fw}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
