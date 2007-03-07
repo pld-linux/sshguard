@@ -10,7 +10,7 @@ Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
 URL:		http://sshguard.sourceforge.net/
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
-BuildRequires:	rpmbuild(macros) >= 1.228
+BuildRequires:	rpmbuild(macros) >= 1.337
 BuildRequires:	scons
 BuildRequires:	sed >= 4.0
 Requires:	iptables
@@ -41,7 +41,6 @@ napisany w C.
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sbindir}
-
 %scons install \
 	%{_fw}
 
