@@ -35,14 +35,14 @@ napisany w C.
 %{__sed} -i -e "s@/usr/local@$RPM_BUILD_ROOT%{_prefix}@g" SConstruct
 
 %build
-%{__scons} \
+%scons \
 	%{_fw}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT%{_sbindir}
 
-%{__scons} install \
+%scons install \
 	%{_fw}
 
 %clean
