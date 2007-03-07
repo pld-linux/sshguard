@@ -2,11 +2,12 @@ Summary:	sshguard - protect hosts from the plague of brute force attacks agains 
 Summary(pl):	sshguard - chroni hosty przed plag± ataków brute force na serwer ssh
 Name:		sshguard
 Version:	0.9
-Release:	1
+Release:	2
 License:	BSD
 Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
 # Source0-md5:	990f53b0213f8cc04cc8ea5882f086a1
+Patch0:		%{name}-includes.patch
 URL:		http://sshguard.sourceforge.net/
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
@@ -32,6 +33,7 @@ jest napisany w C.
 
 %prep
 %setup -q
+%patch0 -p0
 %{__sed} -i -e "s@/usr/local@$RPM_BUILD_ROOT%{_prefix}@g" SConstruct
 
 %build
