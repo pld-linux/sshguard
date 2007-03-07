@@ -23,7 +23,7 @@ independent, fast, and lightweight because it's completely written in
 C.
 
 %description -l pl.UTF-8
-sshguard chroni hosty przed plagą atakow brute force na serwer ssh. W
+sshguard chroni hosty przed plagą ataków brute force na serwer ssh. W
 przeciwieństwie do wielu podobnych narzędzi jest on napisany w
 interpretowanym języku, jest niezależny, szybki i lekki, ponieważ jest
 napisany w C.
