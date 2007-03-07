@@ -35,7 +35,7 @@ python scons.py -Q FIREWALLTYPE=iptables
 rm -rf $RPM_BUILD_ROOT
 
 install -d $RPM_BUILD_ROOT%{_sbindir}
-cp sshguard $RPM_BUILD_ROOT%{_sbindir}/
+install sshguard $RPM_BUILD_ROOT%{_sbindir}/
 
 %clean
 rm -rf $RPM_BUILD_ROOT
