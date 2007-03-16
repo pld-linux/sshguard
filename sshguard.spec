@@ -1,5 +1,5 @@
-Summary:	sshguard - protect hosts from the plague of brute force attacks agains ssh
-Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer ssh
+Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
+Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
 Version:	0.9
 Release:	1
@@ -18,12 +18,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 sshguard protects hosts from the plague of brute force attacks against
-ssh. Unlike many similar tools written in interpreted languages, it's
+SSH. Unlike many similar tools written in interpreted languages, it's
 independent, fast, and lightweight because it's completely written in
 C.
 
 %description -l pl.UTF-8
-sshguard chroni hosty przed plagą ataków brute force na serwer ssh.
+sshguard chroni hosty przed plagą ataków brute force na serwer SSH.
 W przeciwieństwie do wielu podobnych narzędzi napisanych
 w interpretowanych językach jest niezależny, szybki i lekki, ponieważ
 jest napisany w C.
