@@ -8,6 +8,7 @@ Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
 # Source0-md5:	990f53b0213f8cc04cc8ea5882f086a1
 Patch0:		%{name}-includes.patch
+Patch1:		%{name}-path.patch
 URL:		http://sshguard.sourceforge.net/
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
@@ -34,6 +35,7 @@ jest napisany w C.
 %prep
 %setup -q
 %patch0 -p0
+%patch1 -p1
 %{__sed} -i -e "s@/usr/local@$RPM_BUILD_ROOT%{_prefix}@g" SConstruct
 
 %build
