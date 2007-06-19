@@ -1,20 +1,16 @@
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
-Version:	0.9
+Version:	1.0
 Release:	1
 License:	BSD
 Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
-# Source0-md5:	990f53b0213f8cc04cc8ea5882f086a1
-Patch0:		%{name}-includes.patch
-Patch1:		%{name}-path.patch
+# Source0-md5:	77b5a3a9d74542c487b8d5453d53d572
 URL:		http://sshguard.sourceforge.net/
 BuildRequires:	python
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.337
-BuildRequires:	scons
-BuildRequires:	sed >= 4.0
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -30,23 +26,22 @@ W przeciwieństwie do wielu podobnych narzędzi napisanych
 w interpretowanych językach jest niezależny, szybki i lekki, ponieważ
 jest napisany w C.
 
-%define		_fw	-Q FIREWALLTYPE=iptables
-
 %prep
 %setup -q
-%patch0 -p0
-%patch1 -p1
-%{__sed} -i -e "s@/usr/local@$RPM_BUILD_ROOT%{_prefix}@g" SConstruct
 
 %build
-%scons \
-	%{_fw}
+%{__libtoolize}
+%{__aclocal}
+%{__autoconf}
+%{__autoheader}
+%configure \
+    --with-firewall=iptables
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT%{_sbindir}
-%scons install \
-	%{_fw}
+%{__make} install \
+    DESTDIR=$RPM_BUILD_ROOT
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -54,3 +49,4 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/*
+%{_mandir}/man8/sshguard.8.gz
