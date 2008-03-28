@@ -11,8 +11,8 @@ URL:		http://sshguard.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	python
-BuildRequires:	rpm-pythonprov
+#BuildRequires:	python
+#BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.337
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -38,6 +38,7 @@ jest napisany w C.
 %{__autoconf}
 %{__autoheader}
 %configure \
+	--with-iptables=/usr/sbin/iptables \
 	--with-firewall=iptables
 %{__make}
 
@@ -51,6 +52,7 @@ rm -rf $RPM_BUILD_ROOT
 rm -rf $RPM_BUILD_ROOT
 
 %files
+%doc README examples/whitelistfile.example
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/sshguard.8*
