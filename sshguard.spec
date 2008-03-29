@@ -11,8 +11,6 @@ URL:		http://sshguard.sourceforge.net/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-#BuildRequires:	python
-#BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.337
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
