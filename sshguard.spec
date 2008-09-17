@@ -8,6 +8,7 @@ Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
 # Source0-md5:	673a22129487b8d8cb132fb0ced240e6
 URL:		http://sshguard.sourceforge.net/
+Patch0:		%{name}-iptables.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -29,6 +30,7 @@ jest napisany w C.
 
 %prep
 %setup -q
+%patch0 -p1
 
 %build
 %{__libtoolize}
