@@ -1,12 +1,12 @@
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
-Version:	1.1
+Version:	1.2
 Release:	1
 License:	BSD
 Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
-# Source0-md5:	673a22129487b8d8cb132fb0ced240e6
+# Source0-md5:	c4b6e4b2d33990f07a173142caa074f2
 URL:		http://sshguard.sourceforge.net/
 Patch0:		%{name}-iptables.patch
 BuildRequires:	autoconf
