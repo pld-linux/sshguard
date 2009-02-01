@@ -1,14 +1,19 @@
+
+#define	_rc	%{nil}
+%define	_rc	rc2
+
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
-Version:	1.2
-Release:	1
+Version:	1.4
+Release:	0.%{_rc}.1
 License:	BSD
 Group:		Applications
-Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
-# Source0-md5:	c4b6e4b2d33990f07a173142caa074f2
+Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}%{_rc}.tar.bz2
+# Source0-md5:	295327c30948416abff809578bffe895
 URL:		http://sshguard.sourceforge.net/
 Patch0:		%{name}-iptables.patch
+Patch1:		%{name}-getopt.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
@@ -29,8 +34,9 @@ w interpretowanych językach jest niezależny, szybki i lekki, ponieważ
 jest napisany w C.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{version}%{_rc}
 %patch0 -p1
+%patch1 -p1
 
 %build
 %{__libtoolize}
