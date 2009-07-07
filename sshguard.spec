@@ -16,7 +16,6 @@ Patch1:		%{name}-getopt.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	rpmbuild(macros) >= 1.337
 Requires:	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
