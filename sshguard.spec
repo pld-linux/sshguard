@@ -1,6 +1,5 @@
 
-#define	_rc	%{nil}
-%define	_rc	rc2
+%define	_rc	rc5
 
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
@@ -10,7 +9,7 @@ Release:	0.%{_rc}.1
 License:	BSD
 Group:		Applications
 Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	295327c30948416abff809578bffe895
+# Source0-md5:	ff57d62bb8891fe06748bc7c3968ff37
 URL:		http://sshguard.sourceforge.net/
 Patch0:		%{name}-iptables.patch
 Patch1:		%{name}-getopt.patch
