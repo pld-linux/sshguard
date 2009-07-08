@@ -55,6 +55,12 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+iptables -N sshguard
+
+%postun
+iptables -X sshguard 
+
 %files
 %doc README examples/whitelistfile.example
 %defattr(644,root,root,755)
