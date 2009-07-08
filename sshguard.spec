@@ -59,10 +59,10 @@ rm -rf $RPM_BUILD_ROOT
 iptables -N sshguard
 
 %postun
-iptables -X sshguard 
+iptables -X sshguard
 
 %files
-%doc README examples/whitelistfile.example
 %defattr(644,root,root,755)
+%doc README examples/whitelistfile.example
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/sshguard.8*
