@@ -16,7 +16,7 @@ Patch1:		%{name}-getopt.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-Requires:	iptables
+Requires(post,postun):	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
