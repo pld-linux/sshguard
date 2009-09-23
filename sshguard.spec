@@ -1,24 +1,19 @@
-
-#define	_rc	%{nil}
-%define	_rc	rc2
-
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
 Version:	1.4
-Release:	0.%{_rc}.1
+Release:	1
 License:	BSD
 Group:		Applications
-Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}%{_rc}.tar.bz2
-# Source0-md5:	295327c30948416abff809578bffe895
+Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}.tar.bz2
+# Source0-md5:	76ec42919089c51a64df1cd5caa27e08
 URL:		http://sshguard.sourceforge.net/
 Patch0:		%{name}-iptables.patch
 Patch1:		%{name}-getopt.patch
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	libtool
-BuildRequires:	rpmbuild(macros) >= 1.337
-Requires:	iptables
+Requires(post,postun):	iptables
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -34,7 +29,7 @@ w interpretowanych językach jest niezależny, szybki i lekki, ponieważ
 jest napisany w C.
 
 %prep
-%setup -q -n %{name}-%{version}%{_rc}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
@@ -57,8 +52,14 @@ rm -rf $RPM_BUILD_ROOT
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post
+iptables -N sshguard
+
+%postun
+iptables -X sshguard
+
 %files
-%doc README examples/whitelistfile.example
 %defattr(644,root,root,755)
+%doc README examples/whitelistfile.example
 %attr(755,root,root) %{_sbindir}/*
 %{_mandir}/man8/sshguard.8*
