@@ -1,4 +1,4 @@
-%define		_beta	beta2
+%define		_beta	beta3
 Summary:	sshguard - protect hosts from the plague of brute force attacks against SSH
 Summary(pl.UTF-8):	sshguard - chroni hosty przed plagą ataków brute force na serwer SSH
 Name:		sshguard
@@ -6,8 +6,8 @@ Version:	1.5
 Release:	0.%{_beta}.1
 License:	BSD
 Group:		Applications
-Source0:	http://dl.sourceforge.net/sshguard/%{name}-%{version}%{_beta}.tar.bz2
-# Source0-md5:	e0cfbff467fb6e30089137afe474b3c1
+Source0:	http://downloads.sourceforge.net/sshguard/%{name}-%{version}%{_beta}.tar.bz2
+# Source0-md5:	72606d0316a6246129a108eaaa9197c0
 URL:		http://sshguard.sourceforge.net/
 Patch0:		%{name}-iptables.patch
 Patch1:		%{name}-getopt.patch
@@ -24,9 +24,9 @@ independent, fast, and lightweight because it's completely written in
 C.
 
 %description -l pl.UTF-8
-sshguard chroni hosty przed plagą ataków brute force na serwer SSH.
-W przeciwieństwie do wielu podobnych narzędzi napisanych
-w interpretowanych językach jest niezależny, szybki i lekki, ponieważ
+sshguard chroni hosty przed plagą ataków brute force na serwer SSH. W
+przeciwieństwie do wielu podobnych narzędzi napisanych w
+interpretowanych językach, jest niezależny, szybki i lekki, ponieważ
 jest napisany w C.
 
 %prep
